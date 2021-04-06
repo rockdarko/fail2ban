@@ -1,0 +1,22 @@
+---
+# tasks file for fail2ban
+- name: install fail2ban
+  become: yes
+  package: 
+    name: fail2ban
+    state: present
+
+- name: copy sshd fail2ban config
+  become: yes
+  template:
+    src: jail.local.j2
+    dest: /etc/fail2ban/jail.local
+    mode: '0664'
+
+- name: restarting and enabling fail2ban on boot
+  become: yes
+  service: 
+    name: fail2ban
+    state: restarted
+    enabled: yes
+
