@@ -9,7 +9,7 @@
   copy:
     src: files/fail2ban/
     dest: /etc/fail2ban/
-  when: copyconfig == true
+  when: copyconfig == "true"
 
 - name: restart and enable fail2ban on boot
   become: yes
