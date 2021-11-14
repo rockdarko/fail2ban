@@ -11,11 +11,11 @@
     dest: /etc/fail2ban/jail.local
     mode: '0664'
 
-- name: copy sshd filter
+- name: copy fail2ban configs
   become: yes
   copy:
-    src: files/sshd.conf
-    dest: /etc/fail2ban/filter.d/
+    src: files/fail2ban/
+    dest: /etc/fail2ban/
 
 - name: restart and enable fail2ban on boot
   become: yes
