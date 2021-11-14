@@ -17,3 +17,13 @@
     state: absent
     path: /etc/fail2ban
 
+- name: remove fail2ban service
+  become: yes
+  file:
+    state:  absent
+    path: /etc/systemd/system/fail2ban.service
+
+- name: running systemd daemon-reload
+  become: yes
+  service: 
+    daemon_reload: yes
