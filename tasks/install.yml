@@ -1,4 +1,11 @@
 ---
+- name: Enable EPEL Repository on CentOS 7
+  become: yes
+   yum:
+     name: epel-release
+     state: latest
+  when: ansible_facts['os_family'] == 'RedHat'
+
 - name: install fail2ban
   become: yes
   package: 
